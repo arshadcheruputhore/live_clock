@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<body style="margin: 0; padding: 0;">
+    <div style="min-height: 100vh; background-color: black; display: flex; align-items: center;">
+        <h1 style="color: white; font-size: 150px; margin: auto; text-align: center;" id="timeText"></h1>
+    </div>
+</body>
+
+<script>
+    const getTime = () => {
+        const localTime = new Date();
+
+        let hours = localTime.getHours();
+        let minutes = localTime.getMinutes();
+        let seconds = localTime.getSeconds();
+        let session = 'AM'
+
+        if (hours > 12) {
+            hours -= 12;
+            session = 'PM';
+        }
+
+        timeText.innerHTML = `${hours} : ${minutes} : ${seconds} ${session}`;
+
+        setTimeout(() => {
+            getTime()
+        }, 1000);
+    }
+    getTime()
+</script>
+</html>
