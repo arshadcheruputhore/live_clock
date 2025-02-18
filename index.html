@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Digital Clock</title>
 </head>
-<body style="margin: 0; padding: 0;">
-    <div style="min-height: 100vh; background-color: black; display: flex; align-items: center;">
-        <h1 style="color: white; font-size: 150px; margin: auto; text-align: center;" id="timeText"></h1>
+<body>
+    <div>
+        <div class="time-div">
+            <h1 id="timeText"></h1>
+        </div>
     </div>
 </body>
 
@@ -24,8 +27,10 @@
             hours -= 12;
             session = 'PM';
         }
+        if (hours === 0) hours = 12;
+        if (minutes.toString().length === 1) minutes = '0' + minutes;                
 
-        timeText.innerHTML = `${hours} : ${minutes} : ${seconds} ${session}`;
+        timeText.innerText = `${hours} : ${minutes} : ${seconds} ${session}`;
 
         setTimeout(() => {
             getTime()
